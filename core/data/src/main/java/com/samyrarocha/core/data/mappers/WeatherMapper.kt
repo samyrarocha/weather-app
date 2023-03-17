@@ -6,44 +6,28 @@ import com.samyrarocha.core.domain.models.Weather
 import com.samyrarocha.core.network.models.ApiCurrentWeatherData
 import com.samyrarocha.core.network.models.ApiDailyData
 import com.samyrarocha.core.network.models.ApiWeatherData
-import javax.inject.Inject
 
+fun ApiWeatherData.toModel() = Weather(
+        latitude = this.latitude,
+        longitude = this.longitude,
+        timezone = this.timezone,
+        currentWeather = this.currentWeather.toModel(),
+        daily = this.daily.toModel()
+)
 
-class WeatherMapper @Inject constructor(
-    private val currentWeatherMapper: CurrentWeatherMapper,
-    private val dailyMapper: DailyMapper
-): DomainMapper<ApiWeatherData, Weather> {
-    override fun mapToDomain(apiEntity: ApiWeatherData): Weather {
-        return Weather(
-            latitude = apiEntity.latitude,
-            longitude = apiEntity.longitude,
-            timezone = apiEntity.timezone,
-            currentWeather = currentWeatherMapper.mapToDomain(apiEntity.currentWeather),
-            daily = dailyMapper.mapToDomain(apiEntity.daily)
-        )
-    }
-}
+private fun ApiCurrentWeatherData.toModel() = CurrentWeather(
+    temperature = this.temperature,
+    windSpeed = this.windSpeed,
+    windDirection = this.windDirection,
+    weatherCode = this.weatherCode,
+    time = this.time
+)
 
-class CurrentWeatherMapper: DomainMapper<ApiCurrentWeatherData, CurrentWeather>{
-    override fun mapToDomain(apiEntity: ApiCurrentWeatherData): CurrentWeather {
-        return CurrentWeather(
-            temperature = apiEntity.temperature,
-            windSpeed = apiEntity.windSpeed,
-            windDirection = apiEntity.windDirection,
-            weatherCode = apiEntity.weatherCode,
-            time = apiEntity.time
-        )
-    }
-}
+private fun ApiDailyData.toModel() = Daily(
+    time = this.time,
+    temperatureMax = this.temperatureMax,
+    temperatureMin = this.temperatureMin,
+    sunrise = this.sunrise,
+    precipitation = this.precipitation
+)
 
-class DailyMapper: DomainMapper<ApiDailyData, Daily>{
-    override fun mapToDomain(apiEntity: ApiDailyData): Daily {
-        return Daily(
-            time = apiEntity.time,
-            temperatureMax = apiEntity.temperatureMax,
-            temperatureMin = apiEntity.temperatureMin,
-            sunrise = apiEntity.sunrise,
-            precipitation = apiEntity.precipitation
-        )
-    }
-}
