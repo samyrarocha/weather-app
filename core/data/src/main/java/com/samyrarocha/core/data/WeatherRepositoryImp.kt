@@ -1,6 +1,9 @@
 package com.samyrarocha.core.data
 
+import com.samyrarocha.core.data.mappers.toDatabase
 import com.samyrarocha.core.data.mappers.toModel
+import com.samyrarocha.core.database.dao.WeatherDao
+import com.samyrarocha.core.domain.models.FavoriteLocations
 import com.samyrarocha.core.domain.repository.WeatherRepository
 import com.samyrarocha.core.domain.models.Weather
 import com.samyrarocha.core.network.WeatherAppService
@@ -10,8 +13,10 @@ const val DAILY_OPTIONS = "temperature_2m_max,temperature_2m_min,sunrise,precipi
 const val TIMEZONE = "GMT"
 
 class WeatherRepositoryImp @Inject constructor(
-    private val service: WeatherAppService
+    private val service: WeatherAppService,
+    private val cache: WeatherDao
 ) : WeatherRepository {
+
     override suspend fun getWeatherData(latitude: Double, longitude: Double): Result<Weather> {
         return try {
             val data = service.getWeatherData(
@@ -25,5 +30,17 @@ class WeatherRepositoryImp @Inject constructor(
         } catch (exception: Exception) {
             Result.failure(exception)
         }
+    }
+
+    override suspend fun getFavoriteLocation(): List<FavoriteLocations> {
+        return cache.getLocations().map { it.toModel() }
+    }
+
+    override suspend fun insertFavoriteLocation(favoriteLocations: FavoriteLocations) {
+        cache.insertFavoriteLocation(favoriteLocations.toDatabase())
+    }
+
+    override suspend fun deleteFavoriteLocation(favoriteLocations: FavoriteLocations) {
+        cache.deleteFavoriteLocation(favoriteLocations.toDatabase())
     }
 }

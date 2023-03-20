@@ -1,7 +1,9 @@
 package com.samyrarocha.core.data.mappers
 
+import com.samyrarocha.core.database.entity.WeatherDataEntity
 import com.samyrarocha.core.domain.models.CurrentWeather
 import com.samyrarocha.core.domain.models.Daily
+import com.samyrarocha.core.domain.models.FavoriteLocations
 import com.samyrarocha.core.domain.models.Weather
 import com.samyrarocha.core.network.models.ApiCurrentWeatherData
 import com.samyrarocha.core.network.models.ApiDailyData
@@ -31,3 +33,14 @@ private fun ApiDailyData.toModel() = Daily(
     precipitation = this.precipitation
 )
 
+fun WeatherDataEntity.toModel() = FavoriteLocations(
+    id = this.id,
+    latitude = this.latitude,
+    longitude = this.longitude
+)
+
+fun FavoriteLocations.toDatabase() = WeatherDataEntity(
+    id = this.id,
+    latitude = this.latitude,
+    longitude = this.longitude
+)
