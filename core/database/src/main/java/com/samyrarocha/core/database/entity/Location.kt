@@ -3,8 +3,8 @@ package com.samyrarocha.core.database.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "weather")
-data class WeatherDataEntity(
+@Entity(tableName = "location")
+data class Location(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val latitude:Double,

@@ -1,10 +1,8 @@
 package com.samyrarocha.core.data.mappers
 
-import com.samyrarocha.core.database.entity.WeatherDataEntity
-import com.samyrarocha.core.domain.models.CurrentWeather
-import com.samyrarocha.core.domain.models.Daily
-import com.samyrarocha.core.domain.models.FavoriteLocations
-import com.samyrarocha.core.domain.models.Weather
+import com.google.android.gms.maps.model.LatLng
+import com.samyrarocha.core.database.entity.Location
+import com.samyrarocha.core.domain.models.*
 import com.samyrarocha.core.network.models.ApiCurrentWeatherData
 import com.samyrarocha.core.network.models.ApiDailyData
 import com.samyrarocha.core.network.models.ApiWeatherData
@@ -33,14 +31,19 @@ private fun ApiDailyData.toModel() = Daily(
     precipitation = this.precipitation
 )
 
-fun WeatherDataEntity.toModel() = FavoriteLocations(
+fun Location.toModel() = FavoriteLocations(
     id = this.id,
     latitude = this.latitude,
     longitude = this.longitude
 )
 
-fun FavoriteLocations.toDatabase() = WeatherDataEntity(
+fun FavoriteLocations.toDatabase() = Location(
     id = this.id,
+    latitude = this.latitude,
+    longitude = this.longitude
+)
+
+fun LatLng.toModel() = CurrentLocation(
     latitude = this.latitude,
     longitude = this.longitude
 )
