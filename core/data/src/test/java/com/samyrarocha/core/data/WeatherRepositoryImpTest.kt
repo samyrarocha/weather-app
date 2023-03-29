@@ -1,6 +1,7 @@
 package com.samyrarocha.core.data
 
 import android.accounts.NetworkErrorException
+import com.samyrarocha.core.database.dao.WeatherDao
 import com.samyrarocha.core.network.WeatherAppService
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -13,10 +14,12 @@ internal class WeatherRepositoryImpTest{
 
     private lateinit var weatherRepositoryImp: WeatherRepositoryImp
     private val fakeApi = mockk<WeatherAppService>(relaxed = true)
+    private val fakeCache = mockk<WeatherDao>(relaxed = true)
+    private val fakeLocationManager = mockk<LocationManager>(relaxed = true)
 
     @Before
     fun setupRepository(){
-        weatherRepositoryImp = WeatherRepositoryImp(fakeApi)
+        weatherRepositoryImp = WeatherRepositoryImp(fakeApi, fakeCache, fakeLocationManager)
     }
 
     @Test
