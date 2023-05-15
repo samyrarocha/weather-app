@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="6dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dayOfTheWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        tools:text="WED"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/temperatureIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/dayOfTheWeek"
+        app:layout_constraintStart_toStartOf="@+id/dayOfTheWeek"
+        app:layout_constraintEnd_toEndOf="@+id/dayOfTheWeek"
+        tools:text="@tools:sample/avatars"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/MinTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureIcon"
+        app:layout_constraintStart_toStartOf="@+id/dayOfTheWeek"
+        android:textColor="@color/white"
+        tools:text="24"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/MaxTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureIcon"
+        app:layout_constraintStart_toEndOf="@+id/MinTemperature"
+        app:layout_constraintEnd_toEndOf="@+id/dayOfTheWeek"
+        tools:text="29"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

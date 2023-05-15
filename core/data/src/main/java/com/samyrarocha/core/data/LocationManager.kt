@@ -11,7 +11,7 @@ class LocationManager(context: Context) {
 
     private val location = mutableListOf<LatLng>()
 
-    private val fusedLocationClient: FusedLocationProviderClient by lazy {
+    private val fusedLocationClient by lazy {
         LocationServices.getFusedLocationProviderClient(context)
     }
 

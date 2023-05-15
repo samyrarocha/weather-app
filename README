@@ -1,0 +1,15 @@
+# Weather App
+
+WIP
+
+This app consumes Weather Forecast API (https://open-meteo.com) to show weather forecast of the user's location.
+
+## Android technologies
+
+On this project I implemented:
+
+- Dependency injection using Dagger with Hilt
+- Retrofit
+- Flow
+- StateFlow
+- Unit tests using MockK

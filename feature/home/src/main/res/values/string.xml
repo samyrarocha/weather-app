@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //Menu
+    <string name="navigation_icon_name">navigation_icon</string>
+    <string name="navigation_icon_content_description">Navigate to saved places</string>
+
+</resources>

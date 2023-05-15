@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/homeLayout"
+    android:background="@color/home_background">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/homeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Eindhoven"
+        app:navigationIcon="@drawable/navigation_icon"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/homeToolbar"
+        app:layout_constraintStart_toStartOf="@id/homeToolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/greetingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Good Morning"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weekTemperatureRecyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/greetingTextView"
+                app:layout_constraintStart_toStartOf="@+id/greetingTextView"
+                app:layout_constraintEnd_toEndOf="@+id/greetingTextView"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/home_temperature_recycler_view_item"
+                tools:itemCount="7"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rainCardLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/weekTemperatureRecyclerView"
+                app:layout_constraintStart_toStartOf="@+id/weekTemperatureRecyclerView"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/home_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rainCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Chance of Rain"/>
+
+                    <TextView
+                        android:id="@+id/rainCardData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        tools:text="0%"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/humidityCardLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/weekTemperatureRecyclerView"
+                app:layout_constraintStart_toEndOf="@+id/rainCardLayout"
+                app:layout_constraintEnd_toEndOf="@+id/weekTemperatureRecyclerView"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/home_background"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/humidityCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Chance of Rain"/>
+
+                <TextView
+                    android:id="@+id/humidityCardData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    tools:text="0%"/>
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/rainCardLayout"
+                app:layout_constraintStart_toStartOf="@+id/rainCardLayout"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/divider"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/windCardLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/divider1"
+                app:layout_constraintStart_toStartOf="@+id/rainCardLayout"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/home_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/windCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Chance of Rain"/>
+
+                    <TextView
+                        android:id="@+id/windCardData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        tools:text="0%"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/precipitationCardLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/divider1"
+                app:layout_constraintStart_toEndOf="@+id/windCardLayout"
+                app:layout_constraintEnd_toEndOf="@+id/weekTemperatureRecyclerView"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/home_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/precipitationCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Chance of Rain"/>
+
+                    <TextView
+                        android:id="@+id/precipitationCardData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        tools:text="0%"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/windCardLayout"
+                app:layout_constraintStart_toStartOf="@+id/windCardLayout"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/divider"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sunsetCardLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="@+id/windCardLayout"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/home_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/sunsetCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Chance of Rain"/>
+
+                    <TextView
+                        android:id="@+id/sunsetCardData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        tools:text="0%"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uvIndexCardLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                app:layout_constraintStart_toEndOf="@+id/sunsetCardLayout"
+                app:layout_constraintEnd_toEndOf="@+id/weekTemperatureRecyclerView"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/home_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/uvIndexCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Chance of Rain"/>
+
+                    <TextView
+                        android:id="@+id/uvIndexCardData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        tools:text="0%"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

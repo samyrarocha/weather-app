@@ -28,7 +28,9 @@ private fun ApiDailyData.toModel() = Daily(
     temperatureMax = this.temperatureMax,
     temperatureMin = this.temperatureMin,
     sunrise = this.sunrise,
-    precipitation = this.precipitation
+    precipitation = this.precipitation,
+    sunset = this.sunset,
+    uvIndex = this.uvIndex
 )
 
 fun Location.toModel() = FavoriteLocations(
